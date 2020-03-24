@@ -4,10 +4,14 @@ services:
   redis:
     image: redis
     container_name: cache
+    restart: unless-stopped
     expose:
       - 6379
+    networks:
+      - app-network
 
-  app:
+  nodejs:
+    container_name: backend
     build: .
     volumes:
       - .:/usr/app
@@ -15,9 +19,16 @@ services:
     ports:
       - '3000:3000'
     command: ['yarn', 'start']
+    restart: unless-stopped
     links:
       - redis
     environment:
       - REDIS_URL=redis://cache
       - NODE_ENV=development
       - PORT=3000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
