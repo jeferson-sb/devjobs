@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const redis = require('redis');
-const client = redis.createClient();
+const client = redis.createClient({ host: 'redis' });
 const { promisify } = require('util');
 const setAsync = promisify(client.set).bind(client);
 
@@ -29,7 +29,7 @@ async function fetchGithub() {
 }
 
 function filterJuniorJobs(allJobs) {
-  const jrJobs = allJobs.filter(job => {
+  const jrJobs = allJobs.filter((job) => {
     const jobTitle = job.title.toLowerCase();
     if (
       jobTitle.includes('senior') ||

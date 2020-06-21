@@ -1,4 +1,4 @@
-# DevJobs
+# 💼 DevJobs
 
 Find Entry Level Developers Jobs on Github
 ![alt Mockup](.github/mockup.png)
@@ -32,8 +32,10 @@ $ cd client && yarn && yarn build
 $ docker-compose up --build
 ```
 
-> Open http://localhost:3000 in your browser
+> Open http://localhost:3333 in your browser
 
 ## 📝License
 
 This project is licensed under the [MIT License](https://github.com/jeferson-sb/devjobs/blob/master/LICENSE.md)
+
+`Made with ♥ by Jeferson © 2020`

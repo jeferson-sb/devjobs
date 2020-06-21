@@ -7,9 +7,9 @@ const getAsync = promisify(client.get).bind(client);
 routes.get('/jobs', async (req, res) => {
   try {
     const jobs = await getAsync('github');
-    return res.send(jobs);
+    return res.status(200).send(jobs);
   } catch (err) {
-    return res.status(500);
+    return res.sendStatus(500);
   }
 });
 

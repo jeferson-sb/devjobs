@@ -11,13 +11,14 @@ services:
       - app-network
 
   nodejs:
+    image: node:alpine
     container_name: backend
     build: .
     volumes:
       - .:/usr/app
       - /usr/src/app/node_modules
     ports:
-      - '3000:3000'
+      - 3333:3333
     command: ['yarn', 'start']
     restart: unless-stopped
     links:
@@ -25,7 +26,7 @@ services:
     environment:
       - REDIS_URL=redis://cache
       - NODE_ENV=development
-      - PORT=3000
+      - PORT=3333
     networks:
       - app-network
 
